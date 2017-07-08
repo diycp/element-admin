@@ -7,30 +7,48 @@
           <span class="login-form-title">Vue Admin</span>
         </div>
         <el-form-item>
-          <el-input v-model="form.name" placeholder="用户名">
+          <el-input v-model="form.account" placeholder="账  户">
             <template slot="prepend">
               <i class="fa fa-user" aria-hidden="true"></i>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" placeholder="密   码">
+          <el-input v-model="form.password" placeholder="密  码">
             <template slot="prepend">
               <i class="fa fa-lock" aria-hidden="true"></i>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" autofocus="true">登录</el-button>
+          <el-button type="primary" autofocus="true" @click="onSubmit">登录</el-button>
         </el-form-item>
         <p class="login-form-tips">
-          <span>用户名：admin</span>&nbsp;&nbsp;
-          <span>密  码：admin</span>
+          <span>账  户：guest</span>&nbsp;&nbsp;
+          <span>密  码：guest</span>
         </p>
       </el-form>
     </el-col>
   </el-row>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        form: {
+          account: '',
+          password: ''
+        }
+      }
+    },
+    methods: {
+      onSubmit () {
+        this.$router.push('dashboard')
+      }
+    }
+  }
+</script>
 
 <style>
   .el-row, .el-col {
@@ -85,34 +103,5 @@
     width: 24px;
     text-align: center;
   }
-</style>
 
-<script>
-  import ElRow from 'element-ui/packages/row/src/row'
-  import ElCol from 'element-ui/packages/col/src/col'
-  export default {
-    components: {
-      ElCol,
-      ElRow
-    },
-    data () {
-      return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
-      }
-    },
-    methods: {
-      onSubmit () {
-        console.log('submit!')
-      }
-    }
-  }
-</script>
+</style>
